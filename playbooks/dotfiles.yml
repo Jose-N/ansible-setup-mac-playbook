@@ -1,5 +1,5 @@
 ---
-- name: Configure Mac and Application via dotfiles
+- name: Copy dotfiles
   hosts: mac
   become: false
   tasks:

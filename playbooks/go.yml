@@ -19,13 +19,10 @@
         - not goenv_check.stat.exists
 
     - name: Installing delve
-      stat:
-        path: go install github.com/go-delve/delve/cmd/dlv@latest
+      shell: /opt/homebrew/bin/goenv exec go install github.com/go-delve/delve/cmd/dlv@latest
 
     - name: Installing templ
-      stat:
-        path: go install github.com/a-h/templ/cmd/templ@latest
+      shell: /opt/homebrew/bin/goenv exec go install github.com/a-h/templ/cmd/templ@latest
 
     - name: Installing air
-      stat:
-        path: go install github.com/air-verse/air@latest
+      shell: /opt/homebrew/bin/goenv exec go install github.com/air-verse/air@latest
