@@ -2,7 +2,9 @@
 all:
   hosts:
     mac:
-      ansible_host: 
-      ansible_user:
+      ansible_host: 192.168.64.3
+      ansible_user: admin
   vars:
     ansible_connection: ssh
+    ansible_ssh_private_key_file: ~/.ssh/ansible
+
