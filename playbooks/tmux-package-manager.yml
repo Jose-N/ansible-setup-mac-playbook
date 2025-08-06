@@ -1,0 +1,17 @@
+---
+- name: Install Tux Package Manager
+  hosts: mac
+  become: false
+  tasks:
+    - name: Ensuring Tmux Package Manager is installed
+      stat:
+        path: ~/.tmux/plugins/tpm
+      register: tpm_check
+
+    - name: Installing Tmux Package Manager
+      git:
+        repo: 'https://github.com/tmux-plugins/tpm'
+        dest: ~/.tmux/plugins/tpm
+        depth: 1
+      when:
+        - not tpm_check.stat.exists
