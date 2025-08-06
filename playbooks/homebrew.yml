@@ -25,9 +25,11 @@
       - docker
       - docker-compose
       - 1password-cli
+      - powerlevel10k
       - tmux
       - neovim
       - zsh-autocomplete
+      - zsh-autosuggestions
       - zsh-syntax-highlighting
       - ansible
       - hashicorp/tap/terraform

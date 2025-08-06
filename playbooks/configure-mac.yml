@@ -1,0 +1,88 @@
+---
+- name: Configure Mac and Application via dotfiles
+  hosts: mac
+  become: false
+  tasks:
+    - name: Ensuring dotfiles repository is present
+      stat:
+        path: ~/dotfiles
+      register: dot_check
+
+    - name: Cloning dotfiles repository
+      git:
+        repo: 'https://github.com/Jose-N/dotfiles'
+        dest: ~/dotfiles
+      when:
+        - not dot_check.stat.exists
+
+    - name: Ensuring dotfiles repository is present
+      stat:
+        path: ~/dotfiles
+      register: dot_check
+
+    - name: Updating dotfiles repository
+      git:
+        repo: 'https://github.com/Jose-N/dotfiles'
+        dest: ~/dotfiles
+        update: true
+      when:
+        - dot_check.stat.exists
+
+    - name: Removing existing zshrc
+      shell: rm ~/.zshrc
+      when:
+        - dot_check.stat.exists
+      ignore_errors: true
+
+    - name: Copying zshrc
+      shell: cp ~/dotfiles/.zshrc ~/.zshrc
+      when:
+        - dot_check.stat.exists
+
+    - name: Removing existing tmux.conf
+      shell: rm ~/.tmux.conf
+      when:
+        - dot_check.stat.exists
+      ignore_errors: true
+
+    - name: Copying tmux.conf
+      shell: cp ~/dotfiles/.tmux.conf ~/.tmux.conf
+      when:
+        - dot_check.stat.exists
+
+    - name: Removing existing powerlevel10k settings
+      shell: rm ~/.p10k.zsh
+      when:
+        - dot_check.stat.exists
+      ignore_errors: true
+
+    - name: Copying powerlevel10k settings
+      shell: cp ~/dotfiles/.p10k.zsh ~/.p10k.zsh
+      when:
+        - dot_check.stat.exists
+
+    - name: Removing existing nvim settings
+      shell: rm -rf ~/.config/nvim
+      when:
+        - dot_check.stat.exists
+      ignore_errors: true
+
+    - name: Copying nvim settings
+      shell: cp -r ~/dotfiles/nvim ~/.config/nvim
+      when:
+        - dot_check.stat.exists
+
+    - name: Specifying iterm2 settings dir
+      shell: defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/dotfiles/iterm2"
+      when:
+        - dot_check.stat.exists
+
+    - name: Enabling iterm2 external settings
+      shell: defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+      when:
+        - dot_check.stat.exists
+
+    - name: Copying .pub key
+      shell: cp ~/dotfiles/.ssh/*.pub ~/.ssh
+      when:
+        - dot_check.stat.exists

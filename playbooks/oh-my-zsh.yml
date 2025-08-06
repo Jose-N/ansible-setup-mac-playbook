@@ -12,21 +12,3 @@
       shell: /bin/bash sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       when:
         - not omz_check.stat.exists
-
-    - name: Ensuring powerlevel10k is installed
-      stat:
-        path: ~/powerlevel10k
-      register: pl10k_check
-
-    - name: Cloning powerlevel10k
-      git:
-        repo: 'https://github.com/romkatv/powerlevel10k.git'
-        dest: ~/powerlevel10k
-        depth: 1
-      when:
-        - not pl10k_check.stat.exists
-
-    - name: Pushing powerlevel10k to zshrc
-      shell: /bin/echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-      when:
-        - not pl10k_check.stat.exists
