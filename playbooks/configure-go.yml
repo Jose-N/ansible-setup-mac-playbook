@@ -1,0 +1,31 @@
+---
+- name: Configure Go
+  hosts: mac
+  become: false
+  tasks:
+    - name: Checking if goenv folder exists
+      stat:
+        path: ~/.goenv
+      register: goenv_check
+
+    - name: Installing Go via goenv
+      shell: /opt/homebrew/bin/goenv install latest
+      when:
+        - not goenv_check.stat.exists
+
+    - name: Setting global go version
+      shell:  /opt/homebrew/bin/goenv global `/opt/homebrew/bin/goenv versions`
+      when:
+        - not goenv_check.stat.exists
+
+    - name: Installing delve
+      stat:
+        path: go install github.com/go-delve/delve/cmd/dlv@latest
+
+    - name: Installing templ
+      stat:
+        path: go install github.com/a-h/templ/cmd/templ@latest
+
+    - name: Installing air
+      stat:
+        path: go install github.com/air-verse/air@latest
