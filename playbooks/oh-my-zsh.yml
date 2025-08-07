@@ -9,6 +9,6 @@
       register: omz_check
 
     - name: Installing oh-my-zsh
-      shell: /bin/bash sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      shell: /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       when:
         - not omz_check.stat.exists
