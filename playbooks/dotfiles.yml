@@ -111,13 +111,12 @@
         - dot_check.stat.exists
       ignore_errors: true
 
-    - name: Make sketchybar dir
-      shell: mkdir -p ~/.config/sketchybar
+    - name: Copying sketchybar settings
+      shell: cp  ~/dotfiles/sketchybar ~/.config/
       when:
         - dot_check.stat.exists
-      ignore_errors: true
 
-    - name: Copying sketchybar settings
-      shell: cp  ~/dotfiles/.sketchybarrc ~/.config/sketchybar/sketchybarrc
+    - name: Starting sketchybar
+      shell: brew services start sketchybar
       when:
         - dot_check.stat.exists
