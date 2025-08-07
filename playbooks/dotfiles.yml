@@ -67,14 +67,20 @@
         - dot_check.stat.exists
       ignore_errors: true
 
-    - name: Make nvim dir
-      shell: mkdir -p ~/.config/nvim
+    - name: Make config dir
+      shell: mkdir ~/.config
+      when:
+        - dot_check.stat.exists
+      ignore_errors: true
+
+    - name: Deleting nvim settings
+      shell: rm -rf ~/.config/nvim 
       when:
         - dot_check.stat.exists
       ignore_errors: true
 
     - name: Copying nvim settings
-      shell: cp -r ~/dotfiles/nvim ~/.config/nvim
+      shell: cp -r ~/dotfiles/nvim ~/.config/
       when:
         - dot_check.stat.exists
 
@@ -90,5 +96,28 @@
 
     - name: Copying .pub key
       shell: cp ~/dotfiles/.ssh/*.pub ~/.ssh
+      when:
+        - dot_check.stat.exists
+        
+    - name: Copy aerospace settings
+      shell: cp ~/dotfiles/.aerospace.toml ~/.aerospace.toml
+      when:
+        - dot_check.stat.exists
+
+
+    - name: Deleting sketchybar settings
+      shell: rm -rf ~/.config/sketchybar
+      when:
+        - dot_check.stat.exists
+      ignore_errors: true
+
+    - name: Make sketchybar dir
+      shell: mkdir -p ~/.config/sketchybar
+      when:
+        - dot_check.stat.exists
+      ignore_errors: true
+
+    - name: Copying sketchybar settings
+      shell: cp  ~/dotfiles/.sketchybarrc ~/.config/sketchybar/sketchybarrc
       when:
         - dot_check.stat.exists
