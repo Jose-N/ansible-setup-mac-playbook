@@ -112,7 +112,7 @@
       ignore_errors: true
 
     - name: Copying sketchybar settings
-      shell: cp  ~/dotfiles/sketchybar ~/.config/
+      shell: cp -r ~/dotfiles/sketchybar ~/.config/
       when:
         - dot_check.stat.exists
 
