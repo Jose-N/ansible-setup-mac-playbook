@@ -67,6 +67,12 @@
         - dot_check.stat.exists
       ignore_errors: true
 
+    - name: Make nvim dir
+      shell: mkdir -p ~/.config/nvim
+      when:
+        - dot_check.stat.exists
+      ignore_errors: true
+
     - name: Copying nvim settings
       shell: cp -r ~/dotfiles/nvim ~/.config/nvim
       when:
