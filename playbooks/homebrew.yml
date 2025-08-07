@@ -11,6 +11,7 @@
       - font-hack-nerd-font
       - zen
       - nikitabobko/tap/aerospace
+      - 1password
     brew_packages:
       - jq
       - yq
