@@ -94,11 +94,6 @@
       when:
         - dot_check.stat.exists
 
-    - name: Copying .pub key
-      shell: cp ~/dotfiles/.ssh/*.pub ~/.ssh
-      when:
-        - dot_check.stat.exists
-        
     - name: Copy aerospace settings
       shell: cp ~/dotfiles/.aerospace.toml ~/.aerospace.toml
       when:
