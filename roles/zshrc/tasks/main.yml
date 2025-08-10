@@ -19,6 +19,3 @@
 
   - name: Copying zshrc
     shell: cp ~/dotfiles/.zshrc ~/.zshrc
-
-  - name: source zshrc
-    shell: source ~/.zshrc
