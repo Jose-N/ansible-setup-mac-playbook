@@ -3,18 +3,47 @@
   hosts: mac
   become: no
   roles:
-    - {role: 'oh_my_zsh', tags: 'oh-my-zsh'}
-    - {role: 'homebrew', tags: 'homebrew'}
-    - {role: 'homebrew_packages', tags: 'homebrew_packages'}
-    - {role: 'tmux_package_manager', tags: 'tmux-package-manager'}
-    - {role: 'dotfiles', tags: 'dotfiles'}
-    - {role: 'ssh', tags: 'ssh-config'}
-    - {role: 'iterm2', tags: 'iterm2'}
-    - {role: 'aerospace', tags: 'aerospace-config'}
-    - {role: 'lazyvim', tags: 'lazyvim-config'}
-    - {role: 'p10k_zsh', tags: 'p10k-config'}
-    - {role: 'sketchybar', tags: 'sketchybar-config'}
-    - {role: 'tmux', tags: 'tmux-config'}
-    - {role: 'zshrc', tags: 'zsh-config'}
-    - {role: 'go', tags: 'go'}
-    - {role: 'go_plugins', tags: 'go-plugins'}
+    - role: oh_my_zsh
+      tags: oh-my-zsh
+
+    - role: homebrew
+      tags: homebrew
+
+    - role: homebrew_packages
+      tags: homebrew_packages
+
+    - role: tmux_package_manager
+      tags: tmux-package-manager
+
+    - role: dotfiles
+      tags: dotfiles
+
+    - role: ssh
+      tags: ssh-config
+
+    - role: iterm2
+      tags: iterm2
+
+    - role: aerospace
+      tags: aerospace-config
+
+    - role: lazyvim
+      tags: lazyvim-config
+
+    - role: p10k_zsh
+      tags: p10k-config
+
+    - role: sketchybar
+      tags: sketchybar-config
+
+    - role: tmux
+      tags: tmux-config
+
+    - role: zshrc
+      tags: zsh-config
+
+    - role: go
+      tags: go
+
+    - role: go_plugins
+      tags: go-plugins
