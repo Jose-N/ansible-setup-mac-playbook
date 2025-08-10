@@ -1,0 +1,28 @@
+# Copy sketchybar config from dotfiles
+---
+- name: Checking if dotfiles repository is present
+  stat:
+    path: ~/dotfiles
+  register: dot_check
+
+- when: dot_check.stat.exists
+  block:
+  - name: Updating dotfiles repository
+    git:
+      repo: 'https://github.com/Jose-N/dotfiles'
+      dest: ~/dotfiles
+      update: true
+
+  - name: Creating .config dir
+    shell: mkdir ~/.config
+    ignore_errors: true
+
+  - name: Deleting sketchybar settings
+    shell: rm -rf ~/.config/sketchybar
+    ignore_errors: true
+
+  - name: Copying sketchybar settings
+    shell: cp -r ~/dotfiles/sketchybar ~/.config/
+
+  - name: Starting sketchybar
+    shell: brew services start sketchybar

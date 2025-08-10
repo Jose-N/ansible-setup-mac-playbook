@@ -1,8 +1,0 @@
----
-- import_playbook: oh-my-zsh.yml
-- import_playbook: homebrew.yml
-- import_playbook: tmux-package-manager.yml
-- import_playbook: dotfiles.yml
-- import_playbook: go.yml
-- name: Setup MacOS from scratch
-  hosts: mac

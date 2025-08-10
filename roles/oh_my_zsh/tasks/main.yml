@@ -1,0 +1,11 @@
+# Install oh-my-zsh
+---
+- name: Checking if oh-my-zsh is installed
+  stat:
+    path: ~/.oh-my-zsh
+  register: omz_check
+
+- name: Installing oh-my-zsh
+  shell: /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  when:
+    - not omz_check.stat.exists

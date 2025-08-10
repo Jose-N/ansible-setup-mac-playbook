@@ -1,0 +1,14 @@
+## Install goenv via Homebrew and install latest go version 
+---
+- name: Checking if goenv is installed
+  stat:
+    path: ~/.goenv
+  register: goenv_check
+
+- when: not goenv_check.stat.exists
+  block:
+  - name: Installing Go via goenv
+    shell: /opt/homebrew/bin/goenv install latest
+
+  - name: Setting global go version
+    shell:  /opt/homebrew/bin/goenv global `/opt/homebrew/bin/goenv versions`

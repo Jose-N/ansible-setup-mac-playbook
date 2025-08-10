@@ -1,0 +1,21 @@
+# Copy aerospace config from dotfiles
+---
+- name: Checking if dotfiles repository is present
+  stat:
+    path: ~/dotfiles
+  register: dot_check
+
+- when: dot_check.stat.exists
+  block:
+  - name: Updating dotfiles repository
+    git:
+      repo: 'https://github.com/Jose-N/dotfiles'
+      dest: ~/dotfiles
+      update: true
+
+  - name: Removing aerospace settings
+    shell: rm ~/.aerospace.toml
+    ignore_errors: true
+
+  - name: Copy aerospace settings
+    shell: cp ~/dotfiles/.aerospace.toml ~/.aerospace.toml

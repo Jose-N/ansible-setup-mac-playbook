@@ -1,0 +1,37 @@
+# Vars for the casks and packages to install via homebrew
+---
+homebrew_taps:
+  - hashicorp/tap
+  - FelixKratz/formulae
+cask_packages:
+  - iterm2
+  - font-hack-nerd-font
+  - zen
+  - nikitabobko/tap/aerospace
+  - 1password
+brew_packages:
+  - jq
+  - yq
+  - bat
+  - eza
+  - fd
+  - fzf
+  - ripgrep
+  - lazygit
+  - lazydocker
+  - lazysql
+  - docker
+  - docker-compose
+  - 1password-cli
+  - powerlevel10k
+  - tmux
+  - neovim
+  - zsh-autocomplete
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  - ansible
+  - hashicorp/tap/terraform
+  - goenv
+  - pyenv
+  - node
+  - sketchybar
