@@ -33,5 +33,6 @@ brew_packages:
   - hashicorp/tap/terraform
   - goenv
   - pyenv
+  - sqlc
   - node
   - sketchybar
