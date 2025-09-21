@@ -31,6 +31,7 @@ brew_packages:
   - zsh-syntax-highlighting
   - ansible
   - hashicorp/tap/terraform
+  - hashicorp/tap/packer
   - goenv
   - pyenv
   - sqlc
